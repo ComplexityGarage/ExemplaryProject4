@@ -1,7 +1,7 @@
 # ExemplaryProject 4  (Title of the project)
 # Authors 
-- Author 1
-- Author 2
+- Hanna Nowak
+- Mikołaj Pocheć
 # Description of the project 
 Text here... 
 # Science and tech used 
