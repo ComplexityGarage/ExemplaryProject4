@@ -1,9 +1,9 @@
-# ExemplaryProject 4  (Title of the project)
+# Communication Based on Muscle Contraction
 # Authors 
 - Hanna Nowak
 - Mikołaj Pocheć
 # Description of the project 
-Text here... 
+This project aims to utilize technology of electrode-based muscle contraction detection to form a basic form of communication with partially disabled people.
 # Science and tech used 
 Text & plots here... 
 # State of the art 
