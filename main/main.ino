@@ -1,4 +1,4 @@
-/*
+  /*
    This code is based on the manufacturer's examples available to see
    on https://wiki.dfrobot.com/Analog_EMG_Sensor_by_OYMotion_SKU_SEN0240
    under the license below.
@@ -30,7 +30,7 @@
    THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
    DAMAGE.
  */
-
+#include "arrow.h"
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #else
@@ -40,11 +40,13 @@
 #include "EMGFilters.h"
 #define SensorInputPin A0   //sensor input pin number
 #define BUTTON_INPUT_PIN 13 //pin number of the button used to calibrate
+#define SERVO_PIN 12 //pin number to control the servomechanism
+#define DIODE_PIN 8 //pin for calibration signalization
 
 // This is the value by which maximum value found during calibration
 // is multiplied by, before being assigned to threshold
-#define THRESHOLD_P 0.8
-#define CALIBRATION_TIME_MS 5000
+#define THRESHOLD_P 0.7
+#define CALIBRATION_TIME_MS 10000
 
 /*
    Define the `threshold` variable as 0 to calibrate the baseline value of input sEMG signals first.
@@ -87,6 +89,8 @@ void setup()
 	myFilter.init(sampleRate, humFreq, true, true, true);
 	Serial.begin(115200);
 	pinMode(BUTTON_INPUT_PIN, INPUT);
+	pinMode(DIODE_PIN, OUTPUT);
+	initServo(SERVO_PIN);
 }
 
 void loop()
@@ -102,6 +106,8 @@ void loop()
 		calibrationStartTime = millis();
 		Serial.print("Calibration started at ");
 		Serial.println(calibrationStartTime);
+
+		digitalWrite(DIODE_PIN, HIGH);
 	}
 
 	int data = analogRead(SensorInputPin);
@@ -118,6 +124,8 @@ void loop()
 			threshold = calibrationMaxValue * THRESHOLD_P; 
 			Serial.print("Threshold after calibration: ");
 			Serial.println(threshold);
+			resetServo();
+			digitalWrite(DIODE_PIN, LOW);
 		}
 	} else {
 
@@ -128,16 +136,21 @@ void loop()
 		{
 			if (getEMGCount(envelope))
 			{
+				// Originally, the code was used to count
+				// muscle contractions. Now this feature is
+				// disabled.
 				EMG_num++;
 				Serial.print("EMG_num: ");
 				Serial.println(EMG_num);
+
+				rotate();
 			}
 		}
 		else {
 			Serial.println(envelope);
 		}
-		delayMicroseconds(500);
 	}
+	delayMicroseconds(500);
 }
 
 /*
