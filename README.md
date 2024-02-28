@@ -15,13 +15,18 @@ In general, detecting muscle contraction involves placing three electrodes (MID,
 
 A device that implements the description above is e.g. DFRobot Gravity analogue EMG sensor shown below:
 ![dfrobot](https://github.com/ComplexityGarage/ExemplaryProject4/assets/86022023/78845ea4-7286-4cdb-b9a1-3f83f1af4bf9)
-Three of the electrodes are placed in the direction of a muscle. 
+Three of the electrodes are placed in the direction of a muscle. The complete circuit is shown below.
+
+![circuit](https://github.com/ComplexityGarage/ExemplaryProject4/assets/86022023/e43ae1e7-e508-43a6-a1de-3684a254e199)
 
 The gathered signal is rather noisy and not very useful, therefore manufacturer shared [a simple library](https://codeload.github.com/yuyouliang/EMG_Filter/zip/master) and [examplary programs](https://wiki.dfrobot.com/Analog_EMG_Sensor_by_OYMotion_SKU_SEN0240) (which were in fact used in this project).
 
 The original code mentioned above requires adjusting threshold manually (by editing code). As it is not very comfortable, we implemented an automatic calibration activated by pressing a button. A simple algorithm of setting a threshold to ~80% of the maximum value of a 10 second signal sample works very well for our applications.
+
+An useful feature of a circuit above is a LED diode signalizing calibration process.
+
 # State of the art 
-At the current stage, we managed to implement gesture detection (gesture means contraction of corresponding muscle) and it works suprisingly well. If placed in the right placed, the device is able to differentiate between an intentional muscle contraction and false-positives. Implemented automatic calibration not only allows to use the device at different muscles and by different people, but also allows to detect a strenght of later detected gestures. 
+At the current stage, we managed to implement gesture detection (gesture means contraction of corresponding muscle) and it works suprisingly well. If placed in the right spot, the device is able to differentiate between an intentional muscle contraction and false-positives. Implemented automatic calibration not only allows to use the device at different muscles and by different people, but also allows to detect a strenght of later detected gestures. 
 
 To suggest possible usage of our project, we added a support for servomechanism. 
 The idea is that for each successful gesture detection, servomechanism rotates by a constant angle, (e.g. $45^\circ$). It is not hard to imagine the situation, in which this mechanism enables partially paralyzed people to communicate in a simple way. Say we have a circle with four general answers and the disabled person can move their finger. In this situation, we establish a simple form of communication, in which such a person can choose from number of answers, or even choose letters from the alphabet.
