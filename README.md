@@ -28,6 +28,10 @@ An useful feature of a circuit above is a LED diode signalizing calibration proc
 # State of the art 
 At the current stage, we managed to implement gesture detection (gesture means contraction of corresponding muscle) and it works suprisingly well. If placed in the right spot, the device is able to differentiate between an intentional muscle contraction and false-positives. Implemented automatic calibration not only allows to use the device at different muscles and by different people, but also allows to detect a strenght of later detected gestures. 
 
+The processed signal looks like this:
+![image](https://github.com/ComplexityGarage/ExemplaryProject4/assets/86022023/cebb7f23-a20c-40f7-a8b6-77f09920d3c6)
+    Gesture detection is based on setting (in our case - by an automatic calibration) some threshold. Signal below that point is just cut off. Function `getEMGCount` is responsible for deciding whether detected signal can be indeed considered a muscle contraction.
+
 To suggest possible usage of our project, we added a support for servomechanism. 
 The idea is that for each successful gesture detection, servomechanism rotates by a constant angle, (e.g. $45^\circ$). It is not hard to imagine the situation, in which this mechanism enables partially paralyzed people to communicate in a simple way. Say we have a circle with four general answers and the disabled person can move their finger. In this situation, we establish a simple form of communication, in which such a person can choose from number of answers, or even choose letters from the alphabet.
 
