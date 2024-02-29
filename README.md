@@ -3,7 +3,7 @@
 - Hanna Nowak
 - Mikołaj Pocheć
 # Description of the project 
-This project aims to utilize technology of electrode-based muscle contraction detection to form a basic form of communication with partially disabled people.
+This project aims to utilize technology of electrode-based muscle contraction detection to form a basic form of communication with partially paralyzed people.
 # Science and tech used 
 The project was built with:
 - Arduino Uno,
