@@ -35,3 +35,8 @@ The idea is that for each successful gesture detection, servomechanism rotates b
 Unfortunately, our project is not perfect. This fact is directly tied to the used technology. The EMG sensor we use is a rather simple device and it is not as reliable, as we imagine it for a real usage. 
 
 Therefore, the next step could be to build sensor with reusable electrodes (they could be placed on a tightening strap) ourselves. This could be much cheaper and allow us to use multiple detection devices to establish more advanced forms of communication or even to control more complex devices than servomechanism used here. We think that five of such devices could be enough to build a simple artifitial hand for example.
+
+# Sources
+
+https://codeload.github.com/yuyouliang/EMG_Filter/zip/master
+https://wiki.dfrobot.com/Analog_EMG_Sensor_by_OYMotion_SKU_SEN0240
