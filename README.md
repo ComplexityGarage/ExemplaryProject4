@@ -19,7 +19,7 @@ Three of the electrodes are placed in the direction of a muscle. The complete ci
 
 ![circuit](https://github.com/ComplexityGarage/ExemplaryProject4/assets/86022023/e43ae1e7-e508-43a6-a1de-3684a254e199)
 
-The gathered signal is rather noisy and not very useful, therefore manufacturer shared [a simple library](https://codeload.github.com/yuyouliang/EMG_Filter/zip/master) and [examplary programs](https://wiki.dfrobot.com/Analog_EMG_Sensor_by_OYMotion_SKU_SEN0240) (which were in fact used in this project).
+The gathered signal is rather noisy and not very useful, therefore manufacturer shared [a simple library](https://codeload.github.com/yuyouliang/EMG_Filter/zip/master) for data filtering and some [examplary programs](https://wiki.dfrobot.com/Analog_EMG_Sensor_by_OYMotion_SKU_SEN0240) (which were in fact used in this project).
 
 The original code mentioned above requires adjusting threshold manually (by editing code). As it is not very comfortable, we implemented an automatic calibration activated by pressing a button. A simple algorithm of setting a threshold to ~80% of the maximum value of a 10 second signal sample works very well for our applications.
 
